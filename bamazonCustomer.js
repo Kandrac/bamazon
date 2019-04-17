@@ -8,8 +8,8 @@ var connection = mysql.createConnection({
     port: 3306,
 
     user: "root",
-    password: "root",
-    database: "bamazon"
+    password: "*****",
+    database: "bamazon_DB"
 });
 
 
@@ -53,15 +53,15 @@ function start() {
                 {
                     name: 'selectId',
                     type: 'input',
-                    message: 'Enter the id number you want to purchase:',
+                    message: 'Enter the id number of the Item you want to purchase:',
 
 
         },
 
                 {
-                    name: 'amountBought',
+                    name: 'itemQuantity',
                     type: 'input',
-                    message: 'How many would you like?',
+                    message: 'Quantity of item?',
                 }
             ]).then (function (answers) {
             var query = "SELECT * FROM products WHERE ?";
@@ -73,7 +73,7 @@ function start() {
               
 
                 var inStock = res[0].quanity;
-                var itemBought = answers.amountBought;
+                var itemBought = answers.itemQuantity;
 
                 if (inStock >= itemBought) {
                     var leftInStock = inStock - itemBought;
@@ -81,7 +81,7 @@ function start() {
                     var totalPrice = res[0].price * itemBought;
                     var itemPurchased = res[0].product;
                     
-                    console.log(totalPrice + "  total price of items bought");
+                    console.log(totalPrice + "  total purchase price ");
                     
                     connection.query(
                         "UPDATE products SET ? WHERE ?", [
@@ -104,7 +104,7 @@ function start() {
                             console.log("Quanity bought " + itemBought + " for $" + res[0].price);
                             console.log("Total Cost: $" + totalPrice);
                             console.log("\n\r");
-                            console.log("Thank you for shopping with us.");
+                            console.log("Thank you come again.");
                             console.log("==============================================");
                             products();
 
@@ -113,7 +113,7 @@ function start() {
                 } else {
                     console.log("==============================================");
                     console.log("\n\r");
-                    console.log("Not enough of that product");
+                    console.log("Insufficient quantity!");
                     console.log("\n\r");
                     console.log("==============================================");
                    products();
