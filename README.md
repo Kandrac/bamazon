@@ -25,6 +25,7 @@ https://github.com/Kandrac/bamazon/blob/master/screenshots/opening%20screen.PNG
 
 Purchase
 https://github.com/Kandrac/bamazon/blob/master/screenshots/purchase.PNG
+
 Insufficient Quanity
 https://github.com/Kandrac/bamazon/blob/master/screenshots/insufficient%20quanity.PNG
 
